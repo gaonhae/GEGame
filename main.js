@@ -48,32 +48,32 @@ let back = {
 	},
 };
 let dino = {
-	x: canvas.width / 10,
-	y: canvas.height / 2,
 	width: 100,
 	height: 120,
+	x: canvas.width / 10,
+	y: canvas.height / 2,
 	draw() {
 		ctx.fillStyle = "green";
-		// ctx.fillRect(this.x, this.y, this.width, this.height);
-		ctx.drawImage(dinoimage, this.x - 45, this.y - 40, canvas.height / 10, canvas.height / 10);
+		ctx.fillRect(this.x, this.y, this.width, this.height);
+		// ctx.drawImage(dinoimage, this.x - 45, this.y - 40, canvas.height / 10, canvas.height / 10);
 	},
 };
 class Cactus {
 	constructor() {
-		this.x = 2000;
-		this.y = 500;
 		this.width = 50;
 		this.height = 50;
+		this.x = canvas.width / 10;
+		this.y = canvas.height / 2;
 	}
 	draw1() {
 		ctx.fillStyle = "red";
-		// ctx.fillRect(this.x, this.y, this.width, this.height);
-		ctx.drawImage(cacimage, this.x - 30, this.y - 40, 150, 150);
+		ctx.fillRect(this.x, this.y, this.width, this.height);
+		// ctx.drawImage(cacimage, this.x - 30, this.y - 40, 150, 150);
 	}
 	draw2() {
 		ctx.fillStyle = "blue";
-		// ctx.fillRect(this.x, this.y, this.width, this.height);
-		ctx.drawImage(ggoomimage, this.x - 30, this.y - 40, 150, 150);
+		ctx.fillRect(this.x, this.y, this.width, this.height);
+		// ctx.drawImage(ggoomimage, this.x - 30, this.y - 40, 150, 150);
 	}
 }
 
