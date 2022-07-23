@@ -48,32 +48,40 @@ let back = {
 	},
 };
 let dino = {
-	width: 100,
-	height: 120,
+	width: canvas.width / 15,
+	height: canvas.width / 15,
 	x: canvas.width / 10,
 	y: canvas.height / 2,
 	draw() {
 		ctx.fillStyle = "green";
 		ctx.fillRect(this.x, this.y, this.width, this.height);
-		// ctx.drawImage(dinoimage, this.x - 45, this.y - 40, canvas.height / 10, canvas.height / 10);
+		ctx.drawImage(
+			dinoimage,
+			this.x - canvas.width / 100,
+			this.y,
+			this.width + canvas.width / 30,
+			this.height + canvas.height / 30
+			// this.width + canvas.width / 30,
+			// this.height + canvas.height / 30
+		);
 	},
 };
 class Cactus {
 	constructor() {
-		this.width = 50;
-		this.height = 50;
-		this.x = canvas.width / 10;
-		this.y = canvas.height / 2;
+		this.width = canvas.width / 20;
+		this.height = canvas.width / 20;
+		this.x = canvas.width;
+		this.y = canvas.height / 2 + (canvas.width / 15 - canvas.width / 20);
 	}
 	draw1() {
 		ctx.fillStyle = "red";
 		ctx.fillRect(this.x, this.y, this.width, this.height);
-		// ctx.drawImage(cacimage, this.x - 30, this.y - 40, 150, 150);
+		ctx.drawImage(cacimage, this.x, this.y, this.width, this.height);
 	}
 	draw2() {
 		ctx.fillStyle = "blue";
 		ctx.fillRect(this.x, this.y, this.width, this.height);
-		// ctx.drawImage(ggoomimage, this.x - 30, this.y - 40, 150, 150);
+		ctx.drawImage(ggoomimage, this.x, this.y, this.width, this.height);
 	}
 }
 
@@ -83,6 +91,9 @@ document.addEventListener("keydown", function (e) {
 		jumpSwitch = true;
 	}
 });
+document.querySelector("#canvas").onclick = function () {
+	jumpSwitch = true;
+};
 
 //애니메이션
 function animate() {
@@ -91,20 +102,19 @@ function animate() {
 	ctx.clearRect(0, 0, canvas.width, canvas.height);
 	back.draw();
 
-	if (timer % 120 === 0) {
+	if (timer % 60 === 0) {
 		let cactus = new Cactus();
-		cactus.x += Math.random() * 500 + 200;
+		cactus.x -= (Math.random() * canvas.width) / 3 + canvas.width / 20;
 		cactuss.push(cactus);
-		document.querySelector("#nowScore").textContent = timer / 120;
+		document.querySelector("#nowScore").textContent = timer / 60;
 	}
 
 	cactuss.forEach((element, index, cactuss) => {
-		if (element.x < -30) {
+		if (element.x < canvas.width / 150) {
 			cactuss.splice(index, 1);
 		}
 		collision(dino, element);
-		element.x -= 10;
-
+		element.x -= canvas.width / 100;
 		if (ggoom == true) {
 			element.draw2();
 		} else {
@@ -122,8 +132,10 @@ function animate() {
 	}
 	//점프 상한선
 	if (jumpSwitch == true) {
-		if (dino.y > dino.y) {
-			dino.y -= 20;
+		if (dino.y > canvas.height / 6) {
+			dino.y -= canvas.width / 100;
+			console.log(dino.y);
+			console.log(canvas.height / 6);
 		}
 		jumpTimer++;
 	}
@@ -132,11 +144,11 @@ function animate() {
 		jumpSwitch = false;
 	}
 	//점프 하한선
-	if (jumpSwitch == false && dino.y < dino.y - 50) {
-		dino.y += 20;
+	if (jumpSwitch == false && dino.y < canvas.height / 2) {
+		dino.y += canvas.width / 100;
 	}
 	//점프 연타 방지
-	if (dino.y >= 450) {
+	if (dino.y >= canvas.height / 2) {
 		jumpTimer = 0;
 	}
 
