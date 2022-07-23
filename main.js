@@ -48,18 +48,18 @@ let back = {
 	},
 };
 let dino = {
-	width: canvas.width / 15,
+	width: canvas.width / 30,
 	height: canvas.width / 15,
 	x: canvas.width / 10,
-	y: canvas.height / 2,
+	y: canvas.height / 1.7,
 	draw() {
 		ctx.fillStyle = "green";
-		ctx.fillRect(this.x, this.y, this.width, this.height);
+		// ctx.fillRect(this.x, this.y, this.width, this.height);
 		ctx.drawImage(
 			dinoimage,
-			this.x - canvas.width / 100,
-			this.y,
-			this.width + canvas.width / 30,
+			this.x - canvas.width / 40,
+			this.y - canvas.height / 50,
+			this.width + canvas.width / 20,
 			this.height + canvas.height / 30
 			// this.width + canvas.width / 30,
 			// this.height + canvas.height / 30
@@ -68,20 +68,32 @@ let dino = {
 };
 class Cactus {
 	constructor() {
-		this.width = canvas.width / 20;
-		this.height = canvas.width / 20;
+		this.width = canvas.width / 30;
+		this.height = canvas.width / 30;
 		this.x = canvas.width;
-		this.y = canvas.height / 2 + (canvas.width / 15 - canvas.width / 20);
+		this.y = canvas.height / 1.7 + (canvas.width / 15 - canvas.width / 20);
 	}
 	draw1() {
 		ctx.fillStyle = "red";
-		ctx.fillRect(this.x, this.y, this.width, this.height);
-		ctx.drawImage(cacimage, this.x, this.y, this.width, this.height);
+		// ctx.fillRect(this.x, this.y, this.width, this.height);
+		ctx.drawImage(
+			cacimage,
+			this.x - canvas.width / 60,
+			this.y - canvas.height / 40,
+			this.width + canvas.width / 40,
+			this.height + canvas.width / 40
+		);
 	}
 	draw2() {
 		ctx.fillStyle = "blue";
-		ctx.fillRect(this.x, this.y, this.width, this.height);
-		ctx.drawImage(ggoomimage, this.x, this.y, this.width, this.height);
+		// ctx.fillRect(this.x, this.y, this.width, this.height);
+		ctx.drawImage(
+			ggoomimage,
+			this.x - canvas.width / 60,
+			this.y - canvas.height / 40,
+			this.width + canvas.width / 40,
+			this.height + canvas.width / 40
+		);
 	}
 }
 
@@ -104,7 +116,7 @@ function animate() {
 
 	if (timer % 60 === 0) {
 		let cactus = new Cactus();
-		cactus.x -= (Math.random() * canvas.width) / 3 + canvas.width / 20;
+		cactus.x += (Math.random() * canvas.width) / 3 + canvas.width / 20;
 		cactuss.push(cactus);
 		document.querySelector("#nowScore").textContent = timer / 60;
 	}
@@ -133,9 +145,7 @@ function animate() {
 	//점프 상한선
 	if (jumpSwitch == true) {
 		if (dino.y > canvas.height / 6) {
-			dino.y -= canvas.width / 100;
-			console.log(dino.y);
-			console.log(canvas.height / 6);
+			dino.y -= canvas.height / 75;
 		}
 		jumpTimer++;
 	}
@@ -144,8 +154,8 @@ function animate() {
 		jumpSwitch = false;
 	}
 	//점프 하한선
-	if (jumpSwitch == false && dino.y < canvas.height / 2) {
-		dino.y += canvas.width / 100;
+	if (jumpSwitch == false && dino.y < canvas.height / 1.7) {
+		dino.y += canvas.height / 75;
 	}
 	//점프 연타 방지
 	if (dino.y >= canvas.height / 2) {
