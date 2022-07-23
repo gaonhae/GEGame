@@ -50,8 +50,8 @@ let back = {
 let dino = {
 	x: canvas.width / 10,
 	y: 450,
-	width: 100,
-	height: 120,
+	width: canvas.width / 15,
+	height: canvas.width / 12,
 	draw() {
 		ctx.fillStyle = "green";
 		// ctx.fillRect(this.x, this.y, this.width, this.height);
@@ -62,8 +62,8 @@ class Cactus {
 	constructor() {
 		this.x = 2000;
 		this.y = 500;
-		this.width = 50;
-		this.height = 50;
+		this.width = canvas.width / 25;
+		this.height = canvas.width / 25;
 	}
 	draw1() {
 		ctx.fillStyle = "red";
