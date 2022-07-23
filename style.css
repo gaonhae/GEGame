@@ -1,0 +1,57 @@
+body {
+	height: 100vh;
+	margin: 0%;
+	padding: 0%;
+	text-align: center;
+}
+
+#canvas {
+	height: 70%;
+	background-color: black;
+	margin: auto;
+	padding: 0%;
+	border: 10px #bfe3c3 solid;
+	border-radius: 10px;
+}
+
+.board {
+	height: 20%;
+	line-height: 100%;
+	vertical-align: middle;
+	font-family: "Hi Melody", cursive;
+	text-align: center;
+	margin: 0.5% 20%;
+}
+
+.score > span {
+	font-size: 30px;
+	display: inline;
+}
+
+.score {
+	margin: 5%;
+	text-align: center;
+}
+
+#nowScore {
+	margin: auto;
+	margin-top: 5%;
+	height: 20%;
+	font-family: "Hi Melody", cursive;
+	width: 50%;
+	padding-top: 1.5%;
+	padding-bottom: 1.5%;
+}
+
+#restartBtn {
+	text-decoration: none;
+	background-color: #bfe3c3;
+	padding: 1%;
+	border-radius: 10px;
+	border: 2px solid black;
+	font-family: "Hi Melody", cursive;
+	font-size: 30px;
+	font-weight: 900;
+	color: black;
+	margin-top: 30%;
+}
