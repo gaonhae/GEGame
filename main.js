@@ -49,21 +49,21 @@ let back = {
 };
 let dino = {
 	x: canvas.width / 10,
-	y: 450,
-	width: canvas.width / 15,
-	height: canvas.width / 12,
+	y: canvas.height / 2,
+	width: 100,
+	height: 120,
 	draw() {
 		ctx.fillStyle = "green";
 		// ctx.fillRect(this.x, this.y, this.width, this.height);
-		ctx.drawImage(dinoimage, this.x - 45, this.y - 40, 200, 200);
+		ctx.drawImage(dinoimage, this.x - 45, this.y - 40, canvas.height / 10, canvas.height / 10);
 	},
 };
 class Cactus {
 	constructor() {
 		this.x = 2000;
 		this.y = 500;
-		this.width = canvas.width / 25;
-		this.height = canvas.width / 25;
+		this.width = 50;
+		this.height = 50;
 	}
 	draw1() {
 		ctx.fillStyle = "red";
@@ -122,7 +122,7 @@ function animate() {
 	}
 	//점프 상한선
 	if (jumpSwitch == true) {
-		if (dino.y > 100) {
+		if (dino.y > dino.y) {
 			dino.y -= 20;
 		}
 		jumpTimer++;
@@ -132,7 +132,7 @@ function animate() {
 		jumpSwitch = false;
 	}
 	//점프 하한선
-	if (jumpSwitch == false && dino.y < 450) {
+	if (jumpSwitch == false && dino.y < dino.y - 50) {
 		dino.y += 20;
 	}
 	//점프 연타 방지
